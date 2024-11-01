@@ -3,7 +3,7 @@ from snakemake.utils import min_version
 min_version("8.13.0")
 
 
-configfile: "config/config.yaml"
+configfile: "config-giab/config.yaml"
 
 
 report: "report/workflow.rst"
@@ -40,7 +40,7 @@ include: "rules/fusion_calling.smk"
 include: "rules/testcase.smk"
 include: "rules/population.smk"
 include: "rules/mutational_signatures.smk"
-
+include: "rules/msisensor.smk"
 
 batches = "all"
 if is_activated("report/stratify"):

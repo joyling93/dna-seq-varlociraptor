@@ -223,6 +223,7 @@ def get_final_output(wildcards):
                 )
     final_output.extend(get_mutational_burden_targets())
     final_output.extend(get_mutational_signature_targets())
+    final_output.extend(get_msisensor_targets())
 
     if is_activated("population/db"):
         final_output.append(lookup(dpath="population/db/path", within=config))
@@ -663,6 +664,18 @@ def get_mutational_signature_targets():
             )
     return mutational_signature_targets
 
+def get_msisensor_targets():
+    msisensor_targets = []
+    if is_activated("msisensor"):
+        for group in groups:
+            msisensor_targets.extend(
+                expand(
+                    "results/msisensor/{group}_{ext}",
+                    group=groups,
+                    ext=["dis","all","unstable"],
+                )
+            )
+    return msisensor_targets
 
 def get_scattered_calls(ext="bcf"):
     def inner(wildcards):
