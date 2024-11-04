@@ -41,6 +41,8 @@ include: "rules/testcase.smk"
 include: "rules/population.smk"
 include: "rules/mutational_signatures.smk"
 include: "rules/msisensor.smk"
+include: "rules/driver.smk"
+include: "rules/purity_ploidy.smk"
 
 batches = "all"
 if is_activated("report/stratify"):

@@ -221,9 +221,23 @@ def get_final_output(wildcards):
                         calling_type=calling_type,
                     )
                 )
+        if config["driver_gene"]["activate"]:
+            final_output.extend(
+                expand(
+                    "results/driver_gene/{group}.{event}.{calling_type}.driver_gene.xls",
+                    group=(
+                        variants_groups
+                        if calling_type == "variants"
+                        else fusions_groups
+                    ),
+                    event=get_calling_events(calling_type),
+                    calling_type=calling_type,
+                )
+            )
     final_output.extend(get_mutational_burden_targets())
     final_output.extend(get_mutational_signature_targets())
     final_output.extend(get_msisensor_targets())
+    final_output.extend(get_pp_targets())
 
     if is_activated("population/db"):
         final_output.append(lookup(dpath="population/db/path", within=config))
@@ -676,6 +690,18 @@ def get_msisensor_targets():
                 )
             )
     return msisensor_targets
+
+def get_pp_targets():
+    pp_targets = []
+    if is_activated("purity_ploidy"):
+        for group in groups:
+            pp_targets.extend(
+                directory(expand(
+                    "results/purity_ploidy/{group}",
+                    group=groups
+                ))
+            )
+    return pp_targets
 
 def get_scattered_calls(ext="bcf"):
     def inner(wildcards):
