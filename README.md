@@ -1,15 +1,19 @@
-# Snakemake workflow: dna-seq-varlociraptor
+此流程仅用于WGS\WES\PANEL的DNA测序数据分析。
 
-[![Snakemake](https://img.shields.io/badge/snakemake-≥6.3.0-brightgreen.svg)](https://snakemake.github.io)
-[![GitHub actions status](https://github.com/snakemake-workflows/dna-seq-varlociraptor/workflows/Tests/badge.svg?branch=master)](https://github.com/snakemake-workflows/dna-seq-varlociraptor/actions?query=branch%3Amaster+workflow%3ATests)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4675661.svg)](https://doi.org/10.5281/zenodo.4675661)
-
-
-A Snakemake workflow for calling small and structural variants under any kind of scenario (tumor/normal, tumor/normal/relapse, germline, pedigree, populations) via the unified statistical model of [Varlociraptor](https://varlociraptor.github.io).
-
-
-## Usage
-
-The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=snakemake-workflows%2Fdna-seq-varlociraptor).
-
-If you use this workflow in a paper, don't forget to give credits to the authors by citing the URL of this (original) repository and its DOI (see above).
+## 流程图示例
+![流程图](./dag.svg "流程图示例")
+## 流程环境
+``conda activate /public/home/weiyifan/miniforge3/envs/sk8``
+## 流程部署
+``snakedeploy deploy-workflow https://github.com/joyling93/dna-seq-varlociraptor . --tag v1.1.1``
+## 配置信息
+### 必填
+config.yaml  
+samples.yaml  
+units.yaml  
+scenario.yaml  
+### 选填
+primers.tsv  
+super_insteresting_genes.tsv  
+## 流程运行
+``snakemake -c30 --use-conda --cache``

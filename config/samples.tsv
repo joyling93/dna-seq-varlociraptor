@@ -1,1 +1,3 @@
-sample_name	alias	group	platform	purity	panel	umi_read	umi_read_structure	datatype	calling
+sample_name	alias	group	platform	purity	datatype	calling
+SRR23800298	x	x	ILLUMINA		dna	variants
+SRR23800299	y	x	ILLUMINA		dna	variants
