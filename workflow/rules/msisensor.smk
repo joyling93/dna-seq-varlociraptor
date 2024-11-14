@@ -16,7 +16,7 @@ if config["msisensor"]["activate"]:
             "../envs/msisensorPro.yaml"
         shell:
             """
-                msisensor scan \
+                msisensor-pro scan \
                 -d {input} \
                 -o {output} \
                 > {log} 2>&1
