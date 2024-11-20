@@ -1,3 +1,3 @@
 sample_name	unit_name	fq1	fq2	sra	adapters
-SRR23800298	x	/public/home/weiyifan/ptl.test/Germline_split/01_fastp/SRR23800298_1.clean.fq.gz	/public/home/weiyifan/ptl.test/Germline_split/01_fastp/SRR23800298_2.clean.fq.gz
-SRR23800299	x	/public/home/weiyifan/ptl.test/Germline_split/01_fastp/SRR23800299_1.clean.fq.gz	/public/home/weiyifan/ptl.test/Germline_split/01_fastp/SRR23800299_2.clean.fq.gz
+SRR23800298	x	/public/home/weiyifan/xzm/code/dna-seq-varlociraptor/rawdata/SRR23800298_1.clean.fq.gz	/public/home/weiyifan/xzm/code/dna-seq-varlociraptor/rawdata/SRR23800298_2.clean.fq.gz
+SRR23800299	x	/public/home/weiyifan/xzm/code/dna-seq-varlociraptor/rawdata/SRR23800299_1.clean.fq.gz	/public/home/weiyifan/xzm/code/dna-seq-varlociraptor/rawdata/SRR23800299_2.clean.fq.gz
