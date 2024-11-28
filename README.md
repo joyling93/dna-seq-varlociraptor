@@ -139,3 +139,17 @@
 Varlociraptor 支持对任意场景的变异进行集成的不确定性感知call 突变和过滤。这些被定义为所谓的场景，通过[变异call 突变语法](https://varlociraptor.github.io/docs/calling#generic-variant-calling)。
   - [scenario.yaml 模板参考](https://varlociraptor.github.io/varlociraptor-scenarios/landing/)
   - [格式说明](https://varlociraptor.github.io/docs/calling/)
+
+# 主要输出结果说明
+## qc
+fastqc、去重、比对的质控结果
+## final-calls
+fdr 过滤后的 Varlociraptor 突变结果和注释
+## driver_gene
+驱动基因注释结果
+## msisensor
+微卫星突变检测结果
+## purity_ploidy
+纯度和倍性计算结果  
+## tables
+自定义的突变表格结果
