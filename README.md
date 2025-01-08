@@ -6,7 +6,7 @@
 ## 流程环境
 ``conda activate /public/home/weiyifan/miniforge3/envs/sk8``
 ## 流程部署
-``snakedeploy deploy-workflow https://github.com/joyling93/dna-seq-varlociraptor . --tag v1.1.0``
+``snakedeploy deploy-workflow https://github.com/joyling93/dna-seq-varlociraptor . --tag v1.2.0``
 ## 配置信息
 ### 必填
 - config.yaml  

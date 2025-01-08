@@ -7,6 +7,8 @@ if config["purity_ploidy"]["activate"]:
             hdn = "results/purity_ploidy/{sample}.hdn.sam",
             bam = "results/purity_ploidy/{sample}.chr.bam",
             idx = "results/purity_ploidy/{sample}.chr.bam.bai",
+        conda:
+            "tools",
         shell:
             """
             (samtools view -H {input} > {output.hdo} && \
@@ -22,7 +24,7 @@ if config["purity_ploidy"]["activate"]:
         output:
             dr = directory("results/purity_ploidy/{group}")
         conda:
-            "/public/home/weiyifan/miniforge3/envs/purple"
+            "purple",
         log:
             "logs/purity_ploidy/{group}.log"
         threads:
@@ -32,16 +34,16 @@ if config["purity_ploidy"]["activate"]:
             (export _JAVA_OPTIONS="-Xmx48g" &&\
             amber -reference ref  -reference_bam  {input.normal}  \
                 -tumor tumor -tumor_bam {input.tumor} -output_dir  {output.dr}/amber \
-                -loci /public/data/public_data/genomic/vcf/human/GermlineHetPon.hg38.vcf.gz \
+                -loci /public/home/xiezhuoming/xzm/ref/vcf/human/GermlineHetPon.hg38.vcf.gz \
                 -ref_genome_version 38 \
                 -threads {threads} && \
             cobalt -output_dir {output.dr}/cobalt -reference ref  \
                 -reference_bam {input.normal} -tumor tumor -tumor_bam {input.tumor} \
                 -threads {threads} \
-                -gc_profile /public/home/weiyifan/software/PURPLE/copy_number/GC_profile.1000bp.37.cnp && \
+                -gc_profile /public/home/xiezhuoming/xzm/ref/hmftools/v6_0/ref/38/copy_number/GC_profile.1000bp.38.cnp && \
             purple -output_dir {output.dr} -reference ref  -threads {threads} \
-                -ensembl_data_dir /public/data/public_data/genomic/vcf/human/ensembl_data_cache \
+                -ensembl_data_dir /public/home/xiezhuoming/xzm/ref/vcf/human/ensembl_data_cache \
                 -amber {output.dr}/amber -cobalt {output.dr}/cobalt -tumor tumor \
-                -ref_genome_version 38 -ref_genome /public/data/public_data/genomic/species/GRCh38.p14.genome.fa \
-                -gc_profile /public/home/weiyifan/software/PURPLE/copy_number/GC_profile.1000bp.37.cnp > {log} 2>&1)
+                -ref_genome_version 38 -ref_genome /public/home/xiezhuoming/xzm/ref/star/GRCh38_gencode_v44_CTAT_lib_Oct292023.source/GRCh38.primary_assembly.genome.fa \
+                -gc_profile /public/home/xiezhuoming/xzm/ref/hmftools/v6_0/ref/38/copy_number/GC_profile.1000bp.38.cnp > {log} 2>&1)
             """
